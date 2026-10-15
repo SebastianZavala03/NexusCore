@@ -1,7 +1,6 @@
 ﻿from producto import Producto, Equipo, Software, Accesorio
 
 class ProductoFactory:
-    """Clase Fabrica (Patron de Diseno Creacional: Simple Factory)"""
 
     @classmethod
     def crear_producto(cls, tipo, codigo, nombre, stock, precio, caracteristicas, descuento, dato_extra=None):

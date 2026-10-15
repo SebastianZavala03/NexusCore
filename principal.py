@@ -73,7 +73,7 @@ def ejecutar_sistema():
 
             caracteristicas = input("caracteristicas: ").strip().lower()
 
-            print("tipo: 1. equipo | 2. software | 3. accesorio | (otro = general)")
+            print("tipo: 1. equipo | 2. software | 3. accesorio")
             tipo = input("seleccione tipo: ").strip()
 
             dato_extra = None
@@ -322,11 +322,9 @@ def ejecutar_sistema():
             print(f"total productos: {len(inventario_general)}")
 
         elif opcion == "14":
-            print("\nhasta pronto...")
             break
 
-        else:
-            print("error: opcion fuera de rango. ingrese un numero del 1 al 14.")
+
 
 
 ejecutar_sistema()
