@@ -1,6 +1,7 @@
-﻿from excepcion import StockInsuficienteError
+﻿from abc import ABC, abstractmethod
+from excepcion import StockInsuficienteError
 
-class Producto:
+class Producto(ABC):
     def __init__(self, id_producto: str, nombre: str, stock: int, precio: float, caracteristicas: str, descuento: float):
         if stock < 0:
             raise StockInsuficienteError(f"El stock de {nombre} no puede ser menor a 0.")
@@ -16,8 +17,9 @@ class Producto:
         self.caracteristicas = caracteristicas
         self.descuento = descuento
 
+    @abstractmethod
     def obtener_info(self):
-        return f"[{self.id_producto}] {self.nombre} | Stock: {self.stock} | Precio: S/. {self.precio:.2f}"
+        pass
 
     def __str__(self):
         return f"[{self.id_producto}] {self.nombre}"
