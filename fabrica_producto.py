@@ -11,4 +11,4 @@ class ProductoFactory:
         elif tipo == "3":
             return Accesorio(codigo, nombre, stock, precio, caracteristicas, descuento, dato_extra)
         else:
-            return Producto(codigo, nombre, stock, precio, caracteristicas, descuento)
+            raise ValueError(f"Tipo de producto '{tipo}' no valido. Opciones: 1 (Equipo), 2 (Software), 3 (Accesorio).")
