@@ -1,4 +1,5 @@
 ﻿from producto import Producto
+from excepcion import StockInsuficienteError
 
 class DetalleVenta:
     def __init__(self, producto: Producto, cantidad: int):
@@ -15,8 +16,10 @@ class Venta:
         self.total = 0.0
 
     def agregar_detalle(self, producto: Producto, cantidad: int):
-        if cantidad <= 0 or producto.stock < cantidad:
-            return False
+        if cantidad <= 0:
+            raise StockInsuficienteError(f"La cantidad a vender de {producto.nombre} debe ser mayor a 0.")
+        if producto.stock < cantidad:
+            raise StockInsuficienteError(f"Stock insuficiente para {producto.nombre}. Stock actual: {producto.stock}")
         producto.stock -= cantidad
         nuevo_detalle = DetalleVenta(producto, cantidad)
         self.detalles.append(nuevo_detalle)
