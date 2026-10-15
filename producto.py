@@ -1,5 +1,14 @@
-﻿class Producto:
+﻿from excepcion import StockInsuficienteError
+
+class Producto:
     def __init__(self, id_producto: str, nombre: str, stock: int, precio: float, caracteristicas: str, descuento: float):
+        if stock < 0:
+            raise StockInsuficienteError(f"El stock de {nombre} no puede ser menor a 0.")
+        if precio <= 0:
+            raise StockInsuficienteError(f"El precio de {nombre} debe ser mayor a 0.")
+        if descuento < 0 or descuento > 100:
+            raise StockInsuficienteError(f"El descuento de {nombre} debe estar entre 0 y 100.")
+
         self.id_producto = id_producto.strip().lower()
         self.nombre = nombre
         self.stock = stock
@@ -26,6 +35,8 @@ class Equipo(Producto):
 class Software(Producto):
     def __init__(self, id_producto: str, nombre: str, stock: int, precio: float, caracteristicas: str, descuento: float, meses_licencia: int):
         super().__init__(id_producto, nombre, stock, precio, caracteristicas, descuento)
+        if meses_licencia <= 0:
+            raise StockInsuficienteError(f"La licencia para {nombre} debe ser mayor a 0 meses.")
         self.meses_licencia = meses_licencia
 
     def obtener_info(self):
