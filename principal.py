@@ -93,7 +93,7 @@ def ejecutar_sistema():
                 )
                 inventario_general.append(nuevo_producto)
                 print("producto registrado con exito.")
-            except StockInsuficienteError as error:
+            except (StockInsuficienteError, ValueError) as error:
                 print(f"error al registrar: {error}")
 
         elif opcion == "2":
